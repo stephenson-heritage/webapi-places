@@ -23,28 +23,10 @@ namespace Places.Pages
             _logger = logger;
         }
 
-        public RandomUsers users { get; set; }
-        private HttpClient httpClient = new HttpClient();
 
-        public async Task<IActionResult> OnGetAsync()
+        public IActionResult OnGet()
         {
-            RandomUsers data = null;
-            HttpResponseMessage responseMessage = await httpClient
-                .GetAsync("https://randomuser.me/api/?results=3");
-            _logger.Log(LogLevel.Information, "test");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var dataj = await responseMessage.Content.ReadAsStreamAsync();
 
-
-
-                data = await JsonSerializer.DeserializeAsync<Places.Models.RandomUsers.RandomUsers>(
-                    dataj,
-                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
-                );
-                _logger.Log(LogLevel.Information, data.ToString());
-            }
-            users = data;
             return Page();
         }
     }

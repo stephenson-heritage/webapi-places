@@ -1,5 +1,4 @@
 @page
-@using Places.Models.RandomUsers
 @model Places.Pages.IndexModel
 
 <!doctype html>
@@ -18,13 +17,7 @@
 
 <body>
 
-    @if (Model.users != null)
-    {
-        foreach (User user in Model.users.Results)
-        {
-            <div>@user.Name.First</div>
-        }
-    }
+
     <div id="mapid" class="map"></div>
     <script type="text/javascript" src="~/js/map.js"></script>
 </body>
