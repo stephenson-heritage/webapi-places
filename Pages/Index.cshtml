@@ -1,0 +1,32 @@
+@page
+@using Places.Models.RandomUsers
+@model Places.Pages.IndexModel
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <link rel="stylesheet" href="~/css/map.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <title>Leaflet example</title>
+</head>
+
+<body>
+
+    @if (Model.users != null)
+    {
+        foreach (User user in Model.users.Results)
+        {
+            <div>@user.Name.First</div>
+        }
+    }
+    <div id="mapid" class="map"></div>
+    <script type="text/javascript" src="~/js/map.js"></script>
+</body>
+
+</html>
